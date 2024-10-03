@@ -27,7 +27,7 @@ pub fn lsp(string_digits: &str, span: usize) -> Result<u64, Error> {
             return Err(Error::InvalidDigit(not_numeric));
         };
 
-    let result = string_digits
+    Ok(string_digits
         .chars()
         .collect::<Vec<char>>()
         .windows(span)
@@ -39,6 +39,5 @@ pub fn lsp(string_digits: &str, span: usize) -> Result<u64, Error> {
                 .product::<u64>()
         })
         .max()
-        .unwrap();
-    Ok(result)
+        .unwrap())
 }
